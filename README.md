@@ -1,4 +1,4 @@
-# objc_msgSend();
+## objc_msgSend();
 当一个对象收到一个消息（message）的时候，objc_msgSend 函数（messaging function） 会根据对象的 isa 指针 到 class dispatch table 里面去查找 method selector 。如果找不到呢？那就根据 isa 指针寻找到 superclass ，若是一直没有找到，那么就会沿着类继承层次来到了 NSObject 。一旦找到了 method selector,那么就调用 method selector 对应的方法实现并传入对应的参数。这就是 runtime 寻找方法实现的方式，消息动态绑定到方法实现。
 
 ```
@@ -14,7 +14,7 @@
 }
 ```
 
-# NSInvocation
+## NSInvocation
 NSInvocation 是命令模式的一种实现。它把一个目标、一个选择器、一个方法签名、所有的参数都放到一个对象里面。当 NSInvocation 被调用的时候，Objective-C Runtime会执行正确的方法实现
 
 ```
@@ -27,7 +27,7 @@ NSInvocation 是命令模式的一种实现。它把一个目标、一个选择�
     [invocation setArgument:&dog atIndex:2];
     [invocation invoke];
 ```
-# NSMethodSignature
+## NSMethodSignature
 方法签名 NSMethodSignature是一个方法的返回类型和参数类型，不包括方法名称。
 
 ```
@@ -56,7 +56,7 @@ NSLog(@"id Type encoding -->%s",@encode(id));
 
 ```
 
-# 消息转发
+## 消息转发
 -  (BOOL)resolveInstanceMethod:(SEL)sel
 -  (id)forwardingTargetForSelector:(SEL)aSelector
 -  (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
